@@ -20,12 +20,21 @@ public class operaciones extends AppCompatActivity implements View.OnClickListen
     float val1;
     float val2;
 
+    float total =0;
+
     RadioGroup radioGroup;
 
     TextView mostrarR;
     TextView resultadorrr;
 
     Button regresar;
+
+    String sumando, restando, multiplicando, dividiendo;
+
+    float  sumar, restar ,multiplicar, dividir;
+    //valida
+    float totalSuma, totalResta, totalMultiplicacion,totalDivision;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,8 +66,31 @@ public class operaciones extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
 
-        Intent retorno = new Intent(this,MainActivity.class);
-        startActivity(retorno);
+        Intent mandar = new Intent(this,Resultados.class);
+
+        if  (totalSuma != 0 & totalResta != 0 & totalMultiplicacion != 0 & totalDivision != 0)
+
+        {
+            sumando = String.valueOf(sumar);
+            mandar.putExtra("sum",sumar +"");
+
+            restando = String.valueOf(restar);
+            mandar.putExtra("res",restar +"");
+
+            multiplicando =  String.valueOf(multiplicar);
+            mandar.putExtra("mult",multiplicar +"");
+
+            dividiendo = String.valueOf(dividir);
+            mandar.putExtra("divi",dividir +"");
+
+
+            startActivity(mandar);
+        }
+
+        else Toast.makeText(getApplicationContext(),"haga todas las operaciones",Toast.LENGTH_SHORT).show();
+        return;
+
+
     }
 
     public void botones() {
@@ -72,49 +104,70 @@ public class operaciones extends AppCompatActivity implements View.OnClickListen
                 val1 = Integer.parseInt(uno.getText().toString());
                 val2 = Integer.parseInt(segundo.getText().toString());
 
-                float total =0;
-                switch (checkedId) {
 
+
+
+                switch (checkedId) {
 
 
                     case R.id.radioButton1:
 
                         total = val1 + val2;
 
-                        Toast.makeText(getApplicationContext(),"Suma",Toast.LENGTH_SHORT).show();
-                        break;
+                        sumar= total;
+
+                        totalSuma = total;
+
+                        resultadorrr.setText(String.valueOf(total));
+
 
 
                     case R.id.radioButton2:
 
                         total = val1 - val2;
 
-                        Toast.makeText(getApplicationContext(),"Resta",Toast.LENGTH_SHORT).show();
-                        break;
+                        restar = total;
+
+                        totalResta = total;
+
+
+                        resultadorrr.setText(String.valueOf(total));
+
+
 
 
                     case R.id.radioButton3:
 
                         total = val1 * val2;
 
-                        Toast.makeText(getApplicationContext(),"Multiplicacion",Toast.LENGTH_SHORT).show();
-                        break;
+                        multiplicar = total;
+
+                        totalMultiplicacion = total;
+
+                        resultadorrr.setText(String.valueOf(total));
+
+
 
                     case R.id.radioButton4:
 
                         total = val1 / val2;
 
-                        Toast.makeText(getApplicationContext(),"Division",Toast.LENGTH_SHORT).show();
-                        break;
+                        dividir = total;
+
+                        totalDivision = total;
+
+                        resultadorrr.setText(String.valueOf(total));
+
+
 
                     default:
 
                         break;
 
-                    
+
                 }
 
-                    resultadorrr.setText(String.valueOf(total));
+
             }
         });
     }
