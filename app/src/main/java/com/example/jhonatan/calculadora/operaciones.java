@@ -101,8 +101,8 @@ public class operaciones extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
 
-                val1 = Integer.parseInt(uno.getText().toString());
-                val2 = Integer.parseInt(segundo.getText().toString());
+                val1 = Float.parseFloat(uno.getText().toString());
+                val2 = Float.parseFloat(segundo.getText().toString());
 
 
 
@@ -120,6 +120,8 @@ public class operaciones extends AppCompatActivity implements View.OnClickListen
 
                         resultadorrr.setText(String.valueOf(total));
 
+                        Toast.makeText(getApplication(),"suma",Toast.LENGTH_SHORT).show();
+                        return;
 
 
                     case R.id.radioButton2:
@@ -132,6 +134,9 @@ public class operaciones extends AppCompatActivity implements View.OnClickListen
 
 
                         resultadorrr.setText(String.valueOf(total));
+
+                        Toast.makeText(getApplication(),"resta",Toast.LENGTH_SHORT).show();
+                        return;
 
 
 
@@ -146,6 +151,9 @@ public class operaciones extends AppCompatActivity implements View.OnClickListen
 
                         resultadorrr.setText(String.valueOf(total));
 
+                        Toast.makeText(getApplication(),"multiplicacion",Toast.LENGTH_SHORT).show();
+                        return;
+
 
 
                     case R.id.radioButton4:
@@ -158,7 +166,8 @@ public class operaciones extends AppCompatActivity implements View.OnClickListen
 
                         resultadorrr.setText(String.valueOf(total));
 
-
+                        Toast.makeText(getApplication(),"division",Toast.LENGTH_SHORT).show();
+                        return;
 
                     default:
 
